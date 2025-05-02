@@ -1,0 +1,77 @@
+.analyticsContainer {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .analyticsContainer .container {
+    width: 95%;
+    height: 100%;
+    margin: 0 auto;
+  }
+  
+  .analyticsContainer .container .mainHeading {
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 1.13rem;
+    line-height: 1.75rem;
+    color: #636060;
+  }
+  
+  .chartsSection h3,
+  .replyTime h3,
+  .resolvedChats h3,
+  .totalChats h3 {
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1;
+    letter-spacing: 0;
+    vertical-align: middle;
+    color: #00D907;
+  }
+  
+  .chartsSection {
+    margin-top: 1.5rem;
+  }
+  
+  .chartsSection,
+  .replyTime,
+  .resolvedChats,
+  .totalChats {
+    width: 70%;
+  }
+  
+  .replyTime,
+  .resolvedChats,
+  .totalChats {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+  
+  .description {
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 0.81rem;
+    letter-spacing: 0;
+    vertical-align: middle;
+  }
+  
+  .timeValue,
+  .total {
+    font-family: Nunito;
+    font-weight: 600;
+    font-size: 1.56rem;
+    line-height: 1;
+    letter-spacing: 0;
+    color: #00D907;
+    align-self: center;
+    min-width: 4.87rem;
+  }
+  
+  .textBlock {
+    width: 80%;
+  }
+  
+
