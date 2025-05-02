@@ -22,7 +22,7 @@ const Analytics = () => {
     
     
     if (days > 0) {
-      return `${days}d ${hours}h ${minutes}m`;
+      return `${days}d ${hours}h ${minutes}m`;   //Adding timer
     } else if (hours > 0) {
       return `${hours}h ${minutes}m ${seconds}s`;
     } else if (minutes > 0) {
