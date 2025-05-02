@@ -17,31 +17,50 @@ const app = express()
 
 app.use(express.json())
 app.use(cookieParser())
+// const allowedOrigins = [
+//   "http://localhost:5173",
+//   "https://hubly-ticketing-frontend.onrender.com",
+// ];
+
+// app.use(cors({
+//   origin: (origin, callback) => {
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+//   credentials: true,
+//   allowedHeaders: ['Content-Type', 'Authorization']
+// }));
+
+// app.options(
+//   "*",
+//   cors({
+//     origin: allowedOrigins,
+//     credentials: true,
+//   })
+// );
+
 const allowedOrigins = [
   "http://localhost:5173",
   "https://hubly-ticketing-frontend.onrender.com",
 ];
 
-app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-  credentials: true,
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
-
-app.options(
-  "*",
+app.use(
   cors({
-    origin: allowedOrigins,
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
+
 
 app.use(express.urlencoded({extended:true}))
 
