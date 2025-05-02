@@ -48,28 +48,28 @@ TicketRouter.get('/get-percentage',auth,async(req,res)=>{
     }
 })
 
-TicketRouter.get('/:id',async(req,res)=>{
-    try {
-        const id = req.params.id
-        const {status,name} = req.query
-        let query ={}
+// TicketRouter.get('/:id',async(req,res)=>{
+//     try {
+//         const id = req.params.id
+//         const {status,name} = req.query
+//         let query ={}
         
-        if(status && status != 'All Tickets'){
-            query.status =status.toLowerCase()
-        }
-        if(name){
-            query.title = {$regex:name,$options:'i'}
-        }
-        query.assignedTo = new mongoose.Types.ObjectId(id)
+//         if(status && status != 'All Tickets'){
+//             query.status =status.toLowerCase()
+//         }
+//         if(name){
+//             query.title = {$regex:name,$options:'i'}
+//         }
+//         query.assignedTo = new mongoose.Types.ObjectId(id)
 
-        const tickets = await Ticket.find(query).populate('createdBy')
+//         const tickets = await Ticket.find(query).populate('createdBy')
 
-        return res.status(200).json(tickets)
+//         return res.status(200).json(tickets)
         
-    } catch (error) {
-        errorLogger(error,req,res)
-    }
-})
+//     } catch (error) {
+//         errorLogger(error,req,res)
+//     }
+// })
 
 TicketRouter.put('/assign/ticket',auth,async(req,res)=>{
     try {
@@ -140,6 +140,28 @@ TicketRouter.get('/get/average-reply-time',async(req,res)=>{
 
             }}
         ])
+
+        TicketRouter.get("/:id", async (req, res) => {
+          try {
+            const id = req.params.id;
+            const { status, name } = req.query;
+            let query = {};
+
+            if (status && status != "All Tickets") {
+              query.status = status.toLowerCase();
+            }
+            if (name) {
+              query.title = { $regex: name, $options: "i" };
+            }
+            query.assignedTo = new mongoose.Types.ObjectId(id);
+
+            const tickets = await Ticket.find(query).populate("createdBy");
+
+            return res.status(200).json(tickets);
+          } catch (error) {
+            errorLogger(error, req, res);
+          }
+        });
         
         let totalReplyTimeArray = []
 
